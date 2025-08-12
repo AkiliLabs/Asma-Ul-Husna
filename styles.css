@@ -1,0 +1,1850 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #2D3C4D;
+    background-color: #F9FBFA;
+    overflow-x: hidden;
+    font-weight: 400;
+}
+
+.container {
+    max-width: 1400px; /* Increased for more breathing room */
+    margin: 0 auto;
+    padding: 0 40px; /* More horizontal padding */
+}
+
+/* Typography */
+.arabic-text {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-weight: 700;
+}
+
+/* Enhanced Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+p {
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(249, 251, 250, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(249, 251, 250, 0.98);
+    box-shadow: 0 2px 20px rgba(63, 112, 77, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nav-logo .arabic-text {
+    font-size: 1.2rem;
+    color: #d4af37;
+    margin-bottom: -5px;
+}
+
+.nav-logo .app-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2D3C4D;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #2D3C4D;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #3F704D;
+}
+
+.nav-links .download-btn {
+    background: #3F704D;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.nav-links .download-btn:hover {
+    background: #5B9A6A;
+    transform: translateY(-2px);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #3F704D;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(135deg, #1A2C22 0%, #2A4535 50%, #3F704D 100%);
+    overflow: hidden;
+    padding: 100px 0 80px 0; /* Better top/bottom padding */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+}
+
+.custom-bg-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* If no image is provided, fall back to gradient */
+    background-image: linear-gradient(135deg, #1A2C22 0%, #2A4535 50%, #3F704D 100%);
+}
+
+/* Islamic pattern styles (for fallback option) */
+.islamic-pattern {
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 25% 25%, #d4af37 0%, transparent 70%),
+        radial-gradient(circle at 75% 75%, #d4af37 0%, transparent 70%),
+        radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.3) 0%, transparent 50%);
+    background-size: 150px 150px, 150px 150px, 300px 300px;
+    animation: patternMove 30s linear infinite;
+}
+
+.geometric-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="geometric" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23geometric)"/></svg>');
+    opacity: 0.3;
+}
+
+@keyframes patternMove {
+    0% { background-position: 0 0, 75px 75px, 150px 150px; }
+    100% { background-position: 150px 150px, 225px 225px, 300px 300px; }
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* Better balance - more space for text, less for phone */
+    gap: 3rem; /* Reduced gap for better spacing */
+    align-items: center;
+    max-width: 1300px; /* Slightly reduced for better proportions */
+    margin: 0 auto;
+    padding: 0 40px;
+    z-index: 2;
+    position: relative;
+}
+
+.hero-text {
+    color: white;
+}
+
+.arabic-name {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 3rem; /* Reduced for better proportion */
+    font-weight: 700;
+    color: #d4af37;
+    margin-bottom: 0.8rem; /* Reduced margin */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease 0.2s both;
+    line-height: 1.1;
+}
+
+.hero-text h1 {
+    font-size: 2.4rem; /* Further reduced for better balance */
+    font-weight: 700;
+    margin-bottom: 1.2rem; /* Reduced margin */
+    animation: fadeInUp 1s ease 0.4s both;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f8f2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.hero-tagline {
+    font-size: 1rem; /* Slightly reduced for better proportion */
+    margin-bottom: 1.8rem; /* Reduced margin */
+    opacity: 0.9;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease 0.6s both;
+    font-weight: 400;
+    max-width: 480px; /* Slightly reduced max-width */
+}
+
+.hero-hadith {
+    margin-bottom: 2rem; /* Reduced margin for tighter spacing */
+    animation: fadeInUp 1s ease 0.8s both;
+    max-width: 520px; /* Slightly reduced */
+}
+
+.hadith-content {
+    text-align: center;
+    padding: 1.2rem; /* Slightly reduced padding */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px; /* Slightly reduced border radius */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.hadith-arabic {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 1.2rem; /* Slightly reduced */
+    color: #d4af37;
+    font-weight: 700;
+    margin-bottom: 0.8rem; /* Reduced margin */
+    line-height: 1.6;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hadith-translation {
+    font-size: 0.9rem; /* Slightly reduced */
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    margin-bottom: 0.6rem; /* Reduced margin */
+    line-height: 1.5;
+}
+
+.hadith-reference {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.2rem; /* Slightly reduced gap */
+    animation: fadeInUp 1s ease 1s both;
+    margin-top: 0.5rem; /* Add small top margin for spacing */
+}
+
+.testflight-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #d4af37 0%, #e6c547 100%);
+    color: #2D3C4D;
+    text-decoration: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.testflight-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.testflight-btn:hover::before {
+    left: 100%;
+}
+
+.testflight-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, #e6c547 0%, #f2d558 100%);
+}
+
+.btn-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-content i {
+    font-size: 1.5rem;
+}
+
+.btn-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.btn-subtitle {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+.btn-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.learn-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+    padding: 1.2rem 2.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.learn-more-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Phone Mockup */
+.hero-phone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: fadeInRight 1s ease 1.2s both;
+}
+
+.phone-mockup {
+    width: 260px; /* Slightly reduced for better proportion */
+    height: 567px; /* Adjusted proportionally */
+    position: relative;
+    transform: rotate(-8deg);
+    transition: transform 0.5s ease;
+    border-radius: 35px; /* Direct phone shape */
+    overflow: hidden; /* Ensure images don't go outside the phone shape */
+    background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%); /* Realistic phone body */
+    border: 2px solid #333; /* Phone frame */
+    padding: 0; /* Remove all padding to eliminate gaps */
+    
+    /* PHONE SHADOWS AND REFLECTIONS - Comment out this block to remove all shadows/reflections */
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.25),
+        0 6px 20px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Add subtle highlight */
+    /* END PHONE SHADOWS AND REFLECTIONS */
+}
+
+.phone-mockup:hover {
+    transform: rotate(-2deg) scale(1.02);
+    
+    /* PHONE HOVER SHADOWS - Comment out this block to remove hover shadows */
+    box-shadow: 
+        0 35px 70px rgba(0, 0, 0, 0.4),
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    /* END PHONE HOVER SHADOWS */
+}
+
+.phone-shadow {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 50px;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(15px);
+}
+
+/* Single Image Option */
+.screenshot-image {
+    width: 100%; /* Fill width completely */
+    height: 100%; /* Fill height completely */
+    object-fit: cover; /* Fill container completely, may crop parts of image */
+    object-position: center; /* Center the image */
+    border-radius: 35px; /* Match phone mockup border radius exactly */
+    border: none; /* Ensure no borders */
+    margin: 0; /* Remove any margins */
+    padding: 0; /* Remove any padding */
+}
+
+/* Multiple Images Slideshow Option - Now directly inside phone-mockup */
+.phone-slideshow {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: transparent; /* Remove black background that causes black pixels */
+    border-radius: 35px; /* Match phone mockup border radius exactly */
+    border: none !important;
+    box-sizing: border-box !important;
+}
+
+/* REMOVE OR COMMENT OUT THE PHONE ELEMENTS BELOW - SCREENSHOTS ALREADY HAVE THEM */
+/* 
+.phone-mockup::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    z-index: 10;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.phone-mockup::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    z-index: 10;
+}
+*/
+
+/* SCREEN REFLECTION EFFECT - Comment out this entire block to remove the glass reflection */
+/* .phone-slideshow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 5;
+    border-radius: 35px;
+} */
+/* END SCREEN REFLECTION EFFECT */
+
+.screenshot-slide {
+    width: 100%; /* Fill width completely */
+    height: 100%; /* Fill height completely */
+    object-fit: cover; /* Fill container completely, may crop parts of image */
+    object-position: center; /* Center the image */
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    border-radius: 35px; /* Match phone mockup border radius exactly */
+    border: none; /* Ensure no borders */
+    margin: 0; /* Remove any margins */
+    padding: 0; /* Remove any padding */
+}
+
+.screenshot-slide.active {
+    opacity: 1;
+}
+
+/* iPhone Simulator specific adjustments */
+@media (min-width: 768px) {
+    .screenshot-image,
+    .screenshot-slide {
+        /* Ensure full coverage on larger screens */
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Fill container completely, may crop parts of image */
+        object-position: center;
+        border: none;
+        margin: 0;
+        padding: 0;
+        border-radius: 35px;
+    }
+    
+    .phone-slideshow {
+        /* Ensure proper containment */
+        overflow: hidden;
+        background: transparent; /* Remove black background */
+    }
+}
+
+/* Additional fallback - force fill for all screenshots */
+.phone-slideshow img,
+.phone-mockup img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Fill container completely, may crop parts of image */
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block; /* Remove any inline spacing */
+    border-radius: 35px !important;
+}
+
+/* Force full coverage (use this class if needed) */
+.screenshot-image.force-fill,
+.screenshot-slide.force-fill {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Fill container completely, may crop parts of image */
+    object-position: center !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border-radius: inherit !important;
+}
+
+/* Ensure phone mockup has no internal spacing */
+.phone-mockup {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    box-sizing: border-box !important;
+}
+
+/* Fallback Splash Screen Styles */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.indicators {
+    display: flex;
+    gap: 5px;
+    font-size: 0.7rem;
+}
+
+.splash-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 25px;
+}
+
+.splash-screen .allah-text {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 3.5rem;
+    color: #d4af37;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 2px 8px rgba(212, 175, 55, 0.3); }
+    to { text-shadow: 0 2px 8px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.2); }
+}
+
+.splash-screen .ayah-text {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+.splash-screen .translation {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.splash-screen .verse-ref {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    cursor: pointer;
+    padding: 10px; /* Add padding for easier clicking */
+    transition: all 0.3s ease;
+}
+
+.scroll-indicator:hover {
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.scroll-indicator:hover .scroll-arrow {
+    border-color: rgba(255, 255, 255, 1);
+    animation-duration: 1s; /* Speed up animation on hover */
+}
+
+.scroll-arrow {
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+    animation: bounce 2s infinite;
+    transition: all 0.3s ease;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { 
+        transform: translateY(0) rotate(45deg);
+        opacity: 0.8;
+    }
+    40% { 
+        transform: translateY(-10px) rotate(45deg);
+        opacity: 1;
+    }
+    60% { 
+        transform: translateY(-5px) rotate(45deg);
+        opacity: 0.9;
+    }
+}
+
+/* Showcase Section */
+.showcase {
+    padding: 4rem 0; /* Reduced from 6rem */
+    background: white;
+}
+
+.showcase h2 {
+    text-align: center;
+    font-size: 2rem; /* Further reduced from 2.2rem */
+    margin-bottom: 1rem;
+    color: #2D3C4D;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem; /* Reduced from 1.2rem */
+    color: #778899;
+    margin-bottom: 3rem; /* Reduced from 4rem */
+}
+
+/* Screenshot Carousel */
+.screenshot-carousel {
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.carousel-container {
+    display: flex;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.screenshot-slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+    transition: transform 0.5s ease;
+}
+
+.phone-frame {
+    width: 280px;
+    height: 560px;
+    background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    border-radius: 35px;
+    padding: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.2),
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 2px solid #333;
+    position: relative;
+}
+
+/* REMOVE OR COMMENT OUT THESE PHONE ELEMENTS - DEMO CONTENT ALREADY HAS THEM */
+/* 
+.phone-frame::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    z-index: 10;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.phone-frame::after {
+    content: '';
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    z-index: 10;
+}
+*/
+
+.phone-content {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #3F704D 0%, #2A4A35 100%);
+    border-radius: 31px;
+    overflow: hidden;
+    position: relative;
+    color: white;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Splash Demo */
+.splash-demo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.allah-display {
+    font-family: 'Amiri', serif;
+    font-size: 2rem; /* Reduced from 2.5rem */
+    color: #d4af37;
+    margin-bottom: 2rem;
+}
+
+.ayah-display {
+    font-family: 'Amiri', serif;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.translation-display {
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.verse-display {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Cards Demo */
+.cards-demo {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.status-bar-demo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.indicators-demo {
+    display: flex;
+    gap: 3px;
+}
+
+.indicator-dot {
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+}
+
+.header-demo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px 10px;
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.menu-icon span {
+    width: 18px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 1px;
+}
+
+.counter {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.card-demo {
+    flex: 1;
+    margin: 20px 25px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.decorative-corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(212, 175, 55, 0.6);
+}
+
+.decorative-corner.top-left {
+    top: 15px;
+    left: 15px;
+    border-right: none;
+    border-bottom: none;
+    border-top-left-radius: 8px;
+}
+
+.decorative-corner.top-right {
+    top: 15px;
+    right: 15px;
+    border-left: none;
+    border-bottom: none;
+    border-top-right-radius: 8px;
+}
+
+.decorative-corner.bottom-left {
+    bottom: 15px;
+    left: 15px;
+    border-right: none;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+}
+
+.decorative-corner.bottom-right {
+    bottom: 15px;
+    right: 15px;
+    border-left: none;
+    border-top: none;
+    border-bottom-right-radius: 8px;
+}
+
+.card-inner {
+    padding: 2rem;
+    position: relative;
+}
+
+.name-arabic {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 2.2rem;
+    color: #d4af37;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.name-english {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.name-meaning {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: 300;
+}
+
+.favorite-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(224, 82, 99, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #E05263;
+    border: 1px solid rgba(224, 82, 99, 0.3);
+    transition: all 0.3s ease;
+}
+
+.pagination-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 15px 0;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #d4af37;
+    transform: scale(1.2);
+}
+
+.navigation-hint {
+    text-align: center;
+    font-size: 0.75rem;
+    opacity: 0.6;
+    padding: 0 20px 10px;
+}
+
+.bottom-tabs {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 20px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.tab-item.active {
+    opacity: 1;
+    color: #d4af37;
+}
+
+.tab-item i {
+    font-size: 0.9rem;
+}
+
+.tab-item span {
+    font-size: 0.65rem;
+    font-weight: 500;
+}
+
+/* List Demo */
+.list-demo {
+    padding: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.item-number {
+    width: 25px;
+    height: 25px;
+    background: rgba(212, 175, 55, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: #d4af37;
+}
+
+.item-content {
+    flex: 1;
+}
+
+.item-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 0.9rem;
+    color: #d4af37;
+}
+
+.item-english {
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+.item-favorite {
+    color: #E05263;
+    font-size: 0.9rem;
+}
+
+.screenshot-slide h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #2D3C4D;
+}
+
+.screenshot-slide p {
+    color: #778899;
+    text-align: center;
+    max-width: 300px;
+}
+
+/* Carousel Controls */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    transform: translateY(-50%);
+}
+
+.carousel-btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: rgba(63, 112, 77, 0.9);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.carousel-btn:hover {
+    background: #3F704D;
+    transform: scale(1.1);
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #E8EDF0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: #3F704D;
+}
+
+/* Video Section */
+.video-section {
+    margin-top: 3rem;
+}
+
+.video-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.video-placeholder {
+    background: linear-gradient(135deg, #3F704D 0%, #2A4A35 100%);
+    border-radius: 15px;
+    padding: 3rem;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.video-placeholder:hover {
+    transform: scale(1.02);
+}
+
+.play-button {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.video-placeholder:hover .play-button {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* Features Section */
+.features {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #F9FBFA 0%, #E8F5EC 100%);
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2rem; /* Reduced from 2.5rem */
+    margin-bottom: 1rem;
+    color: #2D3C4D;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(63, 112, 77, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(63, 112, 77, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(63, 112, 77, 0.15);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #3F704D 0%, #5B9A6A 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.feature-card h3 {
+    font-size: 1.2rem; /* Reduced from 1.3rem */
+    margin-bottom: 1rem;
+    color: #2D3C4D;
+}
+
+.feature-card p {
+    color: #778899;
+    line-height: 1.7;
+}
+
+/* About Section */
+.about {
+    padding: 6rem 0;
+    background: white;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-size: 2rem; /* Reduced from 2.5rem */
+    margin-bottom: 2rem;
+    color: #2D3C4D;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    color: #778899;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.app-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(232, 245, 236, 0.5);
+    border-radius: 10px;
+    border-left: 4px solid #3F704D;
+}
+
+.benefit-item i {
+    font-size: 1.2rem;
+    color: #3F704D;
+    width: 20px;
+}
+
+.benefit-item span {
+    font-weight: 500;
+    color: #2D3C4D;
+}
+
+.about-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.islamic-calligraphy {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #1A2C22 0%, #2A4535 50%, #3F704D 100%);
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 15px 40px rgba(63, 112, 77, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.islamic-calligraphy::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="islamicPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(212,175,55,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23islamicPattern)"/></svg>');
+    opacity: 0.3;
+}
+
+.calligraphy-text {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 1.8rem;
+    color: #d4af37;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+}
+
+.bismillah-translation {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-style: italic;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #F9FBFA 0%, #E8F5EC 100%);
+}
+
+.testimonials h2 {
+    text-align: center;
+    font-size: 2rem; /* Reduced from 2.5rem */
+    margin-bottom: 1rem;
+    color: #2D3C4D;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(63, 112, 77, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(63, 112, 77, 0.05);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(63, 112, 77, 0.15);
+}
+
+.testimonial-content {
+    padding: 2rem;
+}
+
+.quote-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #3F704D 0%, #5B9A6A 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.testimonial-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #2D3C4D;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.author-info h4 {
+    color: #2D3C4D;
+    font-size: 1rem; /* Reduced from 1.1rem */
+    margin-bottom: 0.25rem;
+}
+
+.author-info span {
+    color: #778899;
+    font-size: 0.9rem;
+}
+
+.rating {
+    display: flex;
+    gap: 2px;
+    color: #d4af37;
+    font-size: 0.9rem;
+}
+
+.community-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(63, 112, 77, 0.1);
+    border: 1px solid rgba(63, 112, 77, 0.05);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(63, 112, 77, 0.15);
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    color: #3F704D;
+    margin-bottom: 1rem;
+}
+
+.stat-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2D3C4D;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-label {
+    color: #778899;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Download Section */
+.download-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #3F704D 0%, #2A4A35 100%);
+    text-align: center;
+    color: white;
+}
+
+.download-content h2 {
+    font-size: 2rem; /* Reduced from 2.5rem */
+    margin-bottom: 1rem;
+}
+
+.download-content p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.download-buttons {
+    margin-bottom: 3rem;
+}
+
+.testflight-btn.large {
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+    background: #d4af37;
+    color: #2D3C4D;
+}
+
+.btn-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-content i {
+    font-size: 2rem;
+}
+
+.btn-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.btn-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.btn-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.download-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.9;
+}
+
+.info-item i {
+    font-size: 1.2rem;
+    color: #d4af37;
+}
+
+/* Footer */
+.footer {
+    padding: 3rem 0;
+    background: #2D3C4D;
+    color: white;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo .arabic-text {
+    font-size: 1.5rem;
+    color: #d4af37;
+    display: block;
+}
+
+.footer-logo .app-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.footer-text p {
+    margin: 0.5rem 0;
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 30px; /* Adjusted for tablet */
+    }
+    
+    .hero {
+        padding-top: 70px; /* Adjust for smaller navbar on tablets */
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+        padding: 0 30px;
+    }
+    
+    .phone-mockup {
+        width: 250px; /* Slightly smaller for tablet */
+        height: 546px; /* Adjusted to match image ratio 334:728 */
+        transform: rotate(-3deg);
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-hadith {
+        max-width: 500px;
+    }
+    
+    .hadith-arabic {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 60px; /* Adjust for mobile navbar */
+        min-height: 100vh;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem; /* Further reduced for mobile */
+    }
+    
+    .arabic-name {
+        font-size: 2.5rem; /* Further reduced for mobile */
+    }
+    
+    .hero-tagline {
+        font-size: 1rem; /* Slightly smaller for mobile */
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .hero-hadith {
+        max-width: 400px;
+    }
+    
+    .hadith-content {
+        padding: 1rem;
+    }
+    
+    .hadith-arabic {
+        font-size: 1.1rem;
+    }
+    
+    .hadith-translation {
+        font-size: 0.9rem;
+    }
+    
+    .phone-mockup {
+        width: 240px;
+        height: 524px; /* Adjusted to match image ratio 334:728 */
+        transform: rotate(0deg);
+    }
+    
+    .testflight-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-card {
+        padding: 2rem;
+    }
+    
+    .download-info {
+        gap: 1.5rem;
+    }
+    
+    .carousel-controls {
+        display: none;
+    }
+    
+    .phone-frame {
+        width: 240px;
+        height: 480px;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .community-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .about-text h2,
+    .features h2,
+    .testimonials h2 {
+        font-size: 1.8rem; /* Further reduced for mobile */
+    }
+    
+    .benefit-item {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    
+    .arabic-name {
+        font-size: 2.2rem; /* Further reduced for smallest screens */
+    }
+    
+    .hero-tagline {
+        font-size: 1rem;
+    }
+    
+    .testflight-btn {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-content {
+        gap: 0.75rem;
+    }
+    
+    .btn-content i {
+        font-size: 1.2rem;
+    }
+    
+    .phone-frame {
+        width: 200px;
+        height: 437px; /* Adjusted to match image ratio 334:728 */
+    }
+    
+    .phone-mockup {
+        width: 200px;
+        height: 437px; /* Adjusted to match image ratio 334:728 */
+    }
+    
+    .download-info {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .community-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
+    }
+    
+    .testimonial-content {
+        padding: 1.5rem;
+    }
+    
+    .islamic-calligraphy {
+        padding: 2rem 1.5rem;
+    }
+    
+    .calligraphy-text {
+        font-size: 1.5rem;
+    }
+    
+    .hero-hadith {
+        max-width: 350px;
+    }
+    
+    .hadith-content {
+        padding: 0.75rem;
+    }
+    
+    .hadith-arabic {
+        font-size: 1rem;
+    }
+    
+    .hadith-translation {
+        font-size: 0.8rem;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .phone-mockup {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Dark mode support (if needed in the future) */
+@media (prefers-color-scheme: dark) {
+    /* Will be implemented if dark mode is needed */
+}
