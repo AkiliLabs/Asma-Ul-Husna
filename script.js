@@ -14,14 +14,15 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeParallaxEffects();
     initPhoneSlideshow(); // Add phone slideshow initialization
     initializeScrollIndicator(); // Add scroll indicator functionality
+    initializeShowcaseSwipe(); // Add showcase swipe functionality
 });
 
 // Phone Slideshow Functionality for Hero Section
 function initPhoneSlideshow() {
-    const slideshow = document.querySelector('.phone-slideshow');
-    if (!slideshow) return;
+    const heroSlideshow = document.querySelector('.hero-phone .phone-slideshow');
+    if (!heroSlideshow) return;
     
-    const slides = slideshow.querySelectorAll('.screenshot-slide');
+    const slides = heroSlideshow.querySelectorAll('.screenshot-slide');
     if (slides.length <= 1) return;
     
     let currentPhoneSlide = 0;
@@ -63,6 +64,37 @@ function initializeScrollIndicator() {
             });
         }
     });
+}
+
+// Showcase swipe functionality
+function initializeShowcaseSwipe() {
+    const showcasePhone = document.querySelector('.showcase-phone');
+    if (!showcasePhone) return;
+    
+    let startX = 0;
+    let endX = 0;
+    
+    showcasePhone.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+    });
+    
+    showcasePhone.addEventListener('touchend', function(e) {
+        endX = e.changedTouches[0].clientX;
+        handleShowcaseSwipe();
+    });
+    
+    function handleShowcaseSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = startX - endX;
+        
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                nextShowcaseSlide();
+            } else {
+                previousShowcaseSlide();
+            }
+        }
+    }
 }
 
 // Carousel functionality
@@ -142,6 +174,72 @@ function updateCarousel() {
         indicator.classList.toggle('active', index === currentSlide);
     });
 }
+
+// App Showcase Phone Navigation
+let currentShowcaseSlide = 0;
+const totalShowcaseSlides = 4;
+
+function changeShowcaseSlide(direction) {
+    if (direction === 1) {
+        nextShowcaseSlide();
+    } else {
+        previousShowcaseSlide();
+    }
+}
+
+function nextShowcaseSlide() {
+    currentShowcaseSlide = (currentShowcaseSlide + 1) % totalShowcaseSlides;
+    updateShowcase();
+}
+
+function previousShowcaseSlide() {
+    currentShowcaseSlide = (currentShowcaseSlide - 1 + totalShowcaseSlides) % totalShowcaseSlides;
+    updateShowcase();
+}
+
+function currentShowcaseSlideSet(slideIndex) {
+    currentShowcaseSlide = slideIndex - 1;
+    updateShowcase();
+}
+
+// Make functions globally accessible
+window.changeShowcaseSlide = changeShowcaseSlide;
+window.currentShowcaseSlide = currentShowcaseSlideSet;
+
+function updateShowcase() {
+    const phoneSlides = document.querySelectorAll('.phone-slideshow .screenshot-slide');
+    const descriptions = document.querySelectorAll('.slide-description');
+    const indicators = document.querySelectorAll('.showcase-indicators .indicator');
+    
+    // Update phone slides
+    phoneSlides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentShowcaseSlide);
+    });
+    
+    // Update descriptions
+    descriptions.forEach((description, index) => {
+        description.classList.toggle('active', index === currentShowcaseSlide);
+    });
+    
+    // Update indicators
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentShowcaseSlide);
+    });
+}
+
+// Auto-advance showcase slideshow
+function initShowcaseAutoSlide() {
+    // Auto-advance slides every 4 seconds (slightly slower than hero)
+    setInterval(() => {
+        nextShowcaseSlide();
+    }, 4000);
+}
+
+// Initialize showcase auto-slide when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Add a small delay to ensure everything is loaded
+    setTimeout(initShowcaseAutoSlide, 1000);
+});
 
 // Scroll animations
 function initializeScrollAnimations() {
