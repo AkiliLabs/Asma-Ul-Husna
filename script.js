@@ -15,10 +15,17 @@ document.addEventListener('DOMContentLoaded', function() {
     initPhoneSlideshow(); // Add phone slideshow initialization
     initializeScrollIndicator(); // Add scroll indicator functionality
     initializeShowcaseSwipe(); // Add showcase swipe functionality
+    
+    // Initialize showcase immediately to ensure first slide is properly displayed
+    updateShowcase();
+    
+    // Start auto-slide after a delay
+    setTimeout(initShowcaseAutoSlide, 1000);
 });
 
 // Phone Slideshow Functionality for Hero Section
 function initPhoneSlideshow() {
+    // Target only hero section slideshow, not showcase section
     const heroSlideshow = document.querySelector('.hero-phone .phone-slideshow');
     if (!heroSlideshow) return;
     
@@ -68,6 +75,7 @@ function initializeScrollIndicator() {
 
 // Showcase swipe functionality
 function initializeShowcaseSwipe() {
+    // Target only the showcase phone, not hero phone
     const showcasePhone = document.querySelector('.showcase-phone');
     if (!showcasePhone) return;
     
@@ -177,7 +185,7 @@ function updateCarousel() {
 
 // App Showcase Phone Navigation
 let currentShowcaseSlide = 0;
-const totalShowcaseSlides = 4;
+const totalShowcaseSlides = 5;
 
 function changeShowcaseSlide(direction) {
     if (direction === 1) {
@@ -207,7 +215,8 @@ window.changeShowcaseSlide = changeShowcaseSlide;
 window.currentShowcaseSlide = currentShowcaseSlideSet;
 
 function updateShowcase() {
-    const phoneSlides = document.querySelectorAll('.phone-slideshow .screenshot-slide');
+    // Target only showcase section slides, not hero section slides
+    const phoneSlides = document.querySelectorAll('.showcase-phone .phone-slideshow .screenshot-slide');
     const descriptions = document.querySelectorAll('.slide-description');
     const indicators = document.querySelectorAll('.showcase-indicators .indicator');
     
@@ -234,12 +243,6 @@ function initShowcaseAutoSlide() {
         nextShowcaseSlide();
     }, 4000);
 }
-
-// Initialize showcase auto-slide when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Add a small delay to ensure everything is loaded
-    setTimeout(initShowcaseAutoSlide, 1000);
-});
 
 // Scroll animations
 function initializeScrollAnimations() {
@@ -338,10 +341,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             // Show notification
-            showNotification('TestFlight download will be available soon!');
+            // showNotification('TestFlight download will be available soon!');
             
             // In a real implementation, this would redirect to TestFlight
-            // window.open('https://testflight.apple.com/join/your-app-id', '_blank');
+            window.open('https://testflight.apple.com/join/rjAm5yft', '_blank');
         });
     });
 });

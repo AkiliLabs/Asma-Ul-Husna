@@ -82,7 +82,7 @@ p {
 .nav-logo .app-name {
     font-size: 1rem;
     font-weight: 600;
-    color: #2D3C4D;
+    color: #646464;
 }
 
 .nav-links {
@@ -629,6 +629,16 @@ p {
     font-size: 0.9rem;
     opacity: 0.7;
     font-weight: 500;
+}
+
+.ayah-reference {
+    font-size: 0.95rem;
+    color: #ffffffcf;
+    font-style: italic;
+    opacity: 0.8;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.2px;
 }
 
 .scroll-indicator {
@@ -1493,7 +1503,7 @@ p {
     z-index: 1;
 }
 
-.bismillah-translation {
+.verse-translation {
     font-size: 0.9rem;
     opacity: 0.9;
     font-style: italic;
