@@ -4,6 +4,7 @@ const totalSlides = 3;
 
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // console.log('DOM loaded, initializing components...');
     initializeNavbar();
     initializeCarousel();
     initializeScrollAnimations();
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPhoneSlideshow(); // Add phone slideshow initialization
     initializeScrollIndicator(); // Add scroll indicator functionality
     initializeShowcaseSwipe(); // Add showcase swipe functionality
+    initializePhoneRotationEffects(); // Add phone rotation and shadow effects
     
     // Initialize showcase immediately to ensure first slide is properly displayed
     updateShowcase();
@@ -24,24 +26,195 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Phone Slideshow Functionality for Hero Section
+let heroSlideIndex = 0;
+let heroSlideInterval;
+
 function initPhoneSlideshow() {
+    // console.log('Initializing hero phone slideshow...');
+    
     // Target only hero section slideshow, not showcase section
     const heroSlideshow = document.querySelector('.hero-phone .phone-slideshow');
-    if (!heroSlideshow) return;
-    
-    const slides = heroSlideshow.querySelectorAll('.screenshot-slide');
-    if (slides.length <= 1) return;
-    
-    let currentPhoneSlide = 0;
-    
-    function nextPhoneSlide() {
-        slides[currentPhoneSlide].classList.remove('active');
-        currentPhoneSlide = (currentPhoneSlide + 1) % slides.length;
-        slides[currentPhoneSlide].classList.add('active');
+    if (!heroSlideshow) {
+        // console.log('Hero slideshow element not found');
+        return;
     }
     
-    // Auto-advance slides every 3 seconds
-    setInterval(nextPhoneSlide, 3000);
+    const slides = heroSlideshow.querySelectorAll('.screenshot-slide');
+    // console.log('Found hero slides:', slides.length);
+    
+    if (slides.length <= 1) {
+        // console.log('Not enough slides for slideshow');
+        return;
+    }
+    
+    function showHeroSlide(index) {
+        // console.log('Showing hero slide:', index);
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+    }
+    
+    function nextHeroSlide() {
+        heroSlideIndex = (heroSlideIndex + 1) % slides.length;
+        // console.log('Moving to hero slide:', heroSlideIndex);
+        showHeroSlide(heroSlideIndex);
+    }
+    
+    // Start automatic slideshow
+    function startHeroSlideshow() {
+        // console.log('Starting automatic hero slideshow...');
+        heroSlideInterval = setInterval(nextHeroSlide, 3000); // Change slide every 4 seconds
+    }
+    
+    // Stop automatic slideshow
+    function stopHeroSlideshow() {
+        if (heroSlideInterval) {
+            clearInterval(heroSlideInterval);
+            heroSlideInterval = null;
+        }
+    }
+    
+    // Initialize first slide
+    showHeroSlide(0);
+    
+    // Start automatic slideshow after a short delay
+    setTimeout(startHeroSlideshow, 2000); // Start after 2 seconds
+    
+    // Pause on hover (optional)
+    const heroPhone = document.querySelector('.hero-phone');
+    if (heroPhone) {
+        heroPhone.addEventListener('mouseenter', stopHeroSlideshow);
+        heroPhone.addEventListener('mouseleave', startHeroSlideshow);
+    }
+}
+
+// Phone Rotation and Shadow Effects
+function initializePhoneRotationEffects() {
+    const heroPhone = document.querySelector('.hero-phone .phone-mockup');
+    const showcasePhone = document.querySelector('.showcase-phone .phone-mockup');
+    
+    // Add rotation effect to both phones
+    [heroPhone, showcasePhone].forEach(phone => {
+        if (!phone) return;
+        
+        let isRotated = false;
+        let isHovering = false;
+        let cooldownActive = false;
+        
+        // Store original transform values
+        const originalTransform = getComputedStyle(phone).transform;
+        const isHeroPhone = phone.closest('.hero-phone');
+        
+        function applyRotation() {
+            if (isHeroPhone) {
+                // Hero phone: moderate rotation and scale
+                phone.style.transform = 'rotate(-2deg) scale(1.05)';
+                phone.style.boxShadow = `
+                    0 40px 80px rgba(0, 0, 0, 0.4),
+                    0 20px 40px rgba(0, 0, 0, 0.25),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                    0 0 30px rgba(63, 112, 77, 0.3)
+                `;
+            } else {
+                // Showcase phone: moderate rotation and scale
+                phone.style.transform = 'rotate(5deg) scale(1.05)';
+                phone.style.boxShadow = `
+                    0 30px 60px rgba(0, 0, 0, 0.35),
+                    0 15px 30px rgba(0, 0, 0, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                    0 0 25px rgba(63, 112, 77, 0.25)
+                `;
+            }
+        }
+        
+        function resetRotation() {
+            phone.style.transform = '';
+            phone.style.boxShadow = '';
+        }
+        
+        function handleMouseEnter() {
+            if (cooldownActive) return;
+            isHovering = true;
+            isRotated = true;
+            applyRotation();
+        }
+        
+        function handleMouseLeave() {
+            if (cooldownActive) return;
+            isHovering = false;
+            isRotated = false;
+            resetRotation();
+        }
+        
+        function handleClick(e) {
+            e.preventDefault();
+            
+            if (cooldownActive) return;
+            
+            cooldownActive = true;
+            
+            // If already hovering, just maintain the rotation
+            if (isHovering) {
+                // Already rotated from hover, just add a slight bounce effect
+                const currentTransform = phone.style.transform;
+                phone.style.transform = currentTransform.replace('scale(1.05)', 'scale(1.02)');
+                setTimeout(() => {
+                    if (isHovering) {
+                        phone.style.transform = currentTransform;
+                    }
+                }, 150);
+            } else {
+                // Not hovering, apply click rotation
+                isRotated = !isRotated;
+                if (isRotated) {
+                    applyRotation();
+                } else {
+                    resetRotation();
+                }
+            }
+            
+            // Add cooldown to prevent rapid clicking
+            setTimeout(() => {
+                cooldownActive = false;
+            }, 300);
+        }
+        
+        function handleTouchStart(e) {
+            e.preventDefault();
+            
+            if (cooldownActive) return;
+            
+            cooldownActive = true;
+            isRotated = !isRotated;
+            
+            if (isRotated) {
+                applyRotation();
+            } else {
+                resetRotation();
+            }
+            
+            // Add cooldown to prevent rapid tapping
+            setTimeout(() => {
+                cooldownActive = false;
+            }, 400);
+        }
+        
+        // Desktop hover events
+        phone.addEventListener('mouseenter', handleMouseEnter);
+        phone.addEventListener('mouseleave', handleMouseLeave);
+        
+        // Desktop and mobile click events
+        phone.addEventListener('click', handleClick);
+        
+        // Mobile touch events for better responsiveness
+        phone.addEventListener('touchstart', handleTouchStart, { passive: false });
+        
+        // Add CSS cursor pointer for better UX
+        phone.style.cursor = 'pointer';
+    });
 }
 
 // Navbar scroll effect
@@ -111,6 +284,12 @@ function initializeCarousel() {
     const slides = document.querySelectorAll('.screenshot-slide');
     const indicators = document.querySelectorAll('.indicator');
     
+    // Check if carousel elements exist before initializing
+    if (!carouselContainer) {
+        // console.log('Carousel container not found - skipping carousel initialization');
+        return;
+    }
+    
     // Auto-slide functionality
     setInterval(() => {
         nextSlide();
@@ -172,6 +351,12 @@ window.currentSlide = currentSlideSet;
 function updateCarousel() {
     const carouselContainer = document.querySelector('.carousel-container');
     const indicators = document.querySelectorAll('.indicator');
+    
+    // Check if carousel container exists before trying to update it
+    if (!carouselContainer) {
+        // console.log('Carousel container not found - skipping carousel update');
+        return;
+    }
     
     // Update carousel position
     const translateX = -currentSlide * 100;
@@ -241,7 +426,7 @@ function initShowcaseAutoSlide() {
     // Auto-advance slides every 4 seconds (slightly slower than hero)
     setInterval(() => {
         nextShowcaseSlide();
-    }, 4000);
+    }, 3000);
 }
 
 // Scroll animations
@@ -317,7 +502,11 @@ function initializeSmoothScrolling() {
             const target = document.querySelector(this.getAttribute('href'));
             
             if (target) {
-                const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                // Calculate navbar height dynamically
+                const navbar = document.querySelector('.navbar');
+                const navbarHeight = navbar ? navbar.offsetHeight : 80;
+                const offsetTop = target.offsetTop - (navbarHeight + 20); // Extra 20px padding
+                
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -388,7 +577,7 @@ function showNotification(message) {
 
 function trackEvent(eventName, parameters) {
     // Placeholder for analytics tracking
-    console.log('Event tracked:', eventName, parameters);
+    // console.log('Event tracked:', eventName, parameters);
     
     // In a real implementation, this would send data to your analytics service
     // Example: gtag('event', eventName, parameters);
@@ -520,6 +709,20 @@ style.textContent = `
             right: 10px;
             max-width: calc(100vw - 20px);
         }
+        
+        /* Ensure navbar doesn't cover content on mobile */
+        .navbar {
+            padding: 0.75rem 0; /* Slightly smaller padding on mobile */
+        }
+        
+        .hero {
+            padding-top: 120px !important; /* Ensure enough space for mobile navbar */
+        }
+        
+        /* Also ensure other sections have proper spacing */
+        #features, #showcase, #about, #download {
+            scroll-margin-top: 80px; /* For smooth scrolling with fixed navbar */
+        }
     }
     
     .loaded {
@@ -529,6 +732,41 @@ style.textContent = `
     body {
         opacity: 0;
         transition: opacity 0.3s ease;
+    }
+    
+    /* Enhanced phone rotation effects */
+    .phone-mockup {
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                   box-shadow 0.4s ease !important;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+    
+    .phone-mockup:active {
+        transform: scale(0.98) !important;
+        transition: transform 0.1s ease !important;
+    }
+    
+    /* Prevent text selection during interaction */
+    .hero-phone, .showcase-phone {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    /* Enhance touch responsiveness on mobile */
+    @media (max-width: 768px) {
+        .phone-mockup {
+            touch-action: manipulation;
+        }
+        
+        .phone-mockup:active {
+            transform: scale(0.95) !important;
+        }
     }
 `;
 document.head.appendChild(style);
@@ -595,5 +833,5 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeLazyLoading();
     
     // Add any additional initializations here
-    console.log('Asma Ul Husna website loaded successfully');
+    // console.log('Asma Ul Husna website loaded successfully');
 });
