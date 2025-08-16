@@ -645,7 +645,7 @@ function initializeParallaxEffects() {
     
     function updateParallax() {
         const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
+        const rate = scrolled * 1.05;
         
         // Hero background parallax
         const heroBackground = document.querySelector('.hero-background');

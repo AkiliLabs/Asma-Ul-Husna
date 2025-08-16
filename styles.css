@@ -159,7 +159,8 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.15;
+    opacity: 0.125;
+    z-index: 1;
 }
 
 .custom-bg-image {
@@ -724,6 +725,8 @@ p {
 .showcase {
     padding: 4rem 0;
     background: #f8fafc;
+    position: relative;
+    z-index: 5;
 }
 
 .showcase h2 {
