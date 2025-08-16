@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeVideoPlayer();
     initializeSmoothScrolling();
     initializeCounters();
-    initializeParallaxEffects();
+    // initializeParallaxEffects();
     initPhoneSlideshow(); // Add phone slideshow initialization
     initializeScrollIndicator(); // Add scroll indicator functionality
     initializeShowcaseSwipe(); // Add showcase swipe functionality
