@@ -586,16 +586,16 @@ function trackEvent(eventName, parameters) {
 // Parallax effect for hero section
 window.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
-    const heroBackground = document.querySelector('.hero-background');
+    // const heroBackground = document.querySelector('.hero-background');
     const heroPhone = document.querySelector('.hero-phone');
     
-    if (heroBackground) {
-        heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
+    // if (heroBackground) {
+    //     heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+    // }
     
-    if (heroPhone && window.innerWidth > 768) {
-        heroPhone.style.transform = `translateY(${scrolled * 0.2}px)`;
-    }
+    // if (heroPhone && window.innerWidth > 768) {
+    //     heroPhone.style.transform = `translateY(${scrolled * 0.2}px)`;
+    // }
 });
 
 // Add loading animation
