@@ -22,18 +22,26 @@
                 <img src="images/icon.png" alt="Asma Ul Husna Icon" class="nav-icon">
                 <div class="nav-text">
                     <span class="arabic-text">الأسماء الحسنى</span>
-                    <span class="app-name">Asma Ul Husna</span>
+                    <span class="app-name" data-translate="nav.title">Asma Ul Husna</span>
                 </div>
             </div>
             <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#about">About</a>
-                <a href="#download" class="download-btn">Download</a>
+                <a href="#features" data-translate="nav.features">Features</a>
+                <a href="#about" data-translate="nav.about">About</a>
+                <a href="#download" class="download-btn" data-translate="nav.download">Download</a>
             </div>
-            <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-right">
+                <div class="language-toggle">
+                    <button id="language-toggle-btn" class="lang-btn" onclick="toggleLanguage()">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-lang">EN</span>
+                    </button>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
@@ -60,15 +68,15 @@
                     <span>Discover the 99 Beautiful Names</span>
                 </div> -->
                 <div class="arabic-name">الأسماء الحسنى</div>
-                <h1>Asma Ul Husna</h1>
-                <p class="hero-tagline">Experience the divine beauty of Allah's 99 Names through an elegant, interactive journey that brings spiritual meaning to your daily life</p>
+                <h1 data-translate="hero.title">Asma Ul Husna</h1>
+                <p class="hero-tagline" data-translate="hero.tagline">Experience the divine beauty of Allah's 99 Names through an elegant, interactive journey that brings spiritual meaning to your daily life</p>
                 <div class="hero-hadith">
                     <div class="hadith-content">
                         <div class="hadith-arabic">إِنَّ لِلَّهِ تِسْعَةً وَتِسْعِينَ اسْمًا مَنْ أَحْصَاهَا دَخَلَ الْجَنَّةَ</div>
-                        <div class="hadith-translation">
+                        <div class="hadith-translation" data-translate="hero.hadith.translation">
                             "Allah has ninety-nine names, whoever learns them will enter Paradise"
                         </div>
-                        <div class="hadith-reference">- Prophet Muhammad ﷺ (Sahih al-Bukhari)</div>
+                        <div class="hadith-reference" data-translate="hero.hadith.reference">- Prophet Muhammad ﷺ (Sahih al-Bukhari)</div>
                     </div>
                 </div>
                 <div class="hero-buttons">
@@ -76,13 +84,13 @@
                         <div class="btn-content">
                             <i class="fab fa-apple"></i>
                             <div class="btn-text">
-                                <span class="btn-subtitle">Download on</span>
+                                <span class="btn-subtitle" data-translate="hero.download.subtitle">Download on</span>
                                 <span class="btn-title">TestFlight</span>
                             </div>
                         </div>
                     </a>
                     <a href="#showcase" class="learn-more-btn">
-                        <span>Explore Features</span>
+                        <span data-translate="hero.explore">Explore Features</span>
                         <i class="fas fa-arrow-down"></i>
                     </a>
                 </div>
@@ -109,8 +117,8 @@
     <!-- App Showcase Section -->
     <section class="showcase" id="showcase">
         <div class="container">
-            <h2>Experience the App</h2>
-            <p class="section-subtitle">See how Asma Ul Husna brings the 99 Names of Allah to life</p>
+            <h2 data-translate="showcase.title">Experience the App</h2>
+            <p class="section-subtitle" data-translate="showcase.subtitle">See how Asma Ul Husna brings the 99 Names of Allah to life</p>
             
             <!-- App Mockup Showcase -->
             <div class="app-showcase">
@@ -137,24 +145,24 @@
                 
                 <div class="showcase-content">
                     <div class="slide-description active">
-                        <h3>Beautiful Splash Screen</h3>
-                        <p>Start your spiritual journey with inspiring verses from the Quran, setting a peaceful and reverent tone for your experience with Allah's beautiful names.</p>
+                        <h3 data-translate="showcase.slides.0.title">Beautiful Splash Screen</h3>
+                        <p data-translate="showcase.slides.0.description">Start your spiritual journey with inspiring verses from the Quran, setting a peaceful and reverent tone for your experience with Allah's beautiful names.</p>
                     </div>
                     <div class="slide-description">
-                        <h3>Interactive Card Experience</h3>
-                        <p>Swipe through elegantly designed cards featuring each of the 99 names with Arabic calligraphy, English transliteration, and meaningful translations.</p>
+                        <h3 data-translate="showcase.slides.1.title">Interactive Card Experience</h3>
+                        <p data-translate="showcase.slides.1.description">Swipe through elegantly designed cards featuring each of the 99 names with Arabic calligraphy, English transliteration, and meaningful translations.</p>
                     </div>
                     <div class="slide-description">
-                        <h3>Detailed View</h3>
-                        <p>Explore each name in depth with beautiful layouts, including meanings, benefits, and relevant verses from the Quran.</p>
+                        <h3 data-translate="showcase.slides.2.title">Detailed View</h3>
+                        <p data-translate="showcase.slides.2.description">Explore each name in depth with beautiful layouts, including meanings, benefits, and relevant verses from the Quran.</p>
                     </div>
                     <div class="slide-description">
-                        <h3>Personalized Experience</h3>
-                        <p>Save your favorite names, customize your experience, and access helpful settings to make the app truly yours on your spiritual journey.</p>
+                        <h3 data-translate="showcase.slides.3.title">Personalized Experience</h3>
+                        <p data-translate="showcase.slides.3.description">Save your favorite names, customize your experience, and access helpful settings to make the app truly yours on your spiritual journey.</p>
                     </div>
                     <div class="slide-description">
-                        <h3>List View</h3>
-                        <p>Save your favorite names, customize your experience, and access helpful settings to make the app truly yours on your spiritual journey.</p>
+                        <h3 data-translate="showcase.slides.4.title">List View</h3>
+                        <p data-translate="showcase.slides.4.description">Save your favorite names, customize your experience, and access helpful settings to make the app truly yours on your spiritual journey.</p>
                     </div>
                 </div>
                 
@@ -185,56 +193,56 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <h2>Discover the Features</h2>
-            <p class="section-subtitle">Everything you need for a meaningful spiritual experience</p>
+            <h2 data-translate="features.title">Discover the Features</h2>
+            <p class="section-subtitle" data-translate="features.subtitle">Everything you need for a meaningful spiritual experience</p>
             
             <div class="features-grid">
                 <div class="feature-card" data-aos="fade-up">
                     <div class="feature-icon">
                         <i class="fas fa-layer-group"></i>
                     </div>
-                    <h3>Two Browsing Modes</h3>
-                    <p>Choose between beautiful swipeable cards for immersive reading or a fast-scroll list view for quick navigation through all 99 names.</p>
+                    <h3 data-translate="features.items.0.title">Two Browsing Modes</h3>
+                    <p data-translate="features.items.0.description">Choose between beautiful swipeable cards for immersive reading or a fast-scroll list view for quick navigation through all 99 names.</p>
                 </div>
                 
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-icon">
                         <i class="fas fa-book-open"></i>
                     </div>
-                    <h3>Rich Details</h3>
-                    <p>Each name includes its meaning, the Quranic verses where it appears, and beautiful audio recitations to enhance your understanding.</p>
+                    <h3 data-translate="features.items.1.title">Rich Details</h3>
+                    <p data-translate="features.items.1.description">Each name includes its meaning, the Quranic verses where it appears, and beautiful audio recitations to enhance your understanding.</p>
                 </div>
                 
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="feature-icon">
                         <i class="fas fa-heart"></i>
                     </div>
-                    <h3>Personalization</h3>
-                    <p>Save your favorite names and verses for quick access. Create your personal collection of the names that resonate most with you.</p>
+                    <h3 data-translate="features.items.2.title">Personalization</h3>
+                    <p data-translate="features.items.2.description">Save your favorite names and verses for quick access. Create your personal collection of the names that resonate most with you.</p>
                 </div>
                 
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="feature-icon">
                         <i class="fas fa-globe"></i>
                     </div>
-                    <h3>Multi-language Support</h3>
-                    <p>Experience the app in both English and Turkish, making it accessible to a wider community of believers.</p>
+                    <h3 data-translate="features.items.3.title">Multi-language Support</h3>
+                    <p data-translate="features.items.3.description">Experience the app in both English and Turkish, making it accessible to a wider community of believers.</p>
                 </div>
                 
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="feature-icon">
                         <i class="fas fa-volume-up"></i>
                     </div>
-                    <h3>Audio Recitations</h3>
-                    <p>Listen to beautiful recitations of each name to improve pronunciation and deepen your spiritual connection.</p>
+                    <h3 data-translate="features.items.4.title">Audio Recitations</h3>
+                    <p data-translate="features.items.4.description">Listen to beautiful recitations of each name to improve pronunciation and deepen your spiritual connection.</p>
                 </div>
                 
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
                     <div class="feature-icon">
                         <i class="fas fa-bell"></i>
                     </div>
-                    <h3>Helpful Notifications</h3>
-                    <p>Receive gentle reminders and daily inspiration to keep you connected with the beautiful names of Allah throughout your day.</p>
+                    <h3 data-translate="features.items.5.title">Helpful Notifications</h3>
+                    <p data-translate="features.items.5.description">Receive gentle reminders and daily inspiration to keep you connected with the beautiful names of Allah throughout your day.</p>
                 </div>
             </div>
         </div>
@@ -245,14 +253,14 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>About Asma Ul Husna</h2>
-                    <p>
+                    <h2 data-translate="about.title">About Asma Ul Husna</h2>
+                    <p data-translate="about.paragraph1">
                         Asma Ul Husna is more than just an app—it's a spiritual companion designed to help Muslims around the world deepen their connection with Allah through His beautiful names. Each of the 99 names carries profound meaning and reflects different aspects of Allah's infinite mercy, wisdom, and power.
                     </p>
-                    <p>
+                    <p data-translate="about.paragraph2">
                         Our app combines traditional Islamic knowledge with modern technology, creating an accessible and engaging way to explore these sacred names. Whether you're a student of Islamic studies, someone seeking spiritual growth, or simply curious about the beauty of Islamic tradition, Asma Ul Husna provides a respectful and enriching experience.
                     </p>
-                    <p>
+                    <p data-translate="about.paragraph3">
                         The app was carefully crafted with attention to Islamic values and aesthetics, ensuring that every interaction enhances rather than distracts from the spiritual significance of Allah's names.
                     </p>
                     <!-- <div class="app-benefits">
@@ -273,7 +281,7 @@
                 <div class="about-visual">
                     <div class="islamic-calligraphy">
                         <div class="calligraphy-text">هُوَ اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلَامُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ ۚ سُبْحَانَ اللَّهِ عَمَّا يُشْرِكُونَ</div>
-                        <p class="verse-translation">He is Allah, other than whom there is no deity, the Sovereign, the Pure, the Perfection, the Bestower of Faith, the Overseer, the Exalted in Might, the Compeller, the Superior. Exalted is Allah above whatever they associate with Him.</p>
+                        <p class="verse-translation" data-translate="about.verse.translation">He is Allah, other than whom there is no deity, the Sovereign, the Pure, the Perfection, the Bestower of Faith, the Overseer, the Exalted in Might, the Compeller, the Superior. Exalted is Allah above whatever they associate with Him.</p>
                         <p class="ayah-reference">59:23</p>
                     </div>
                 </div>
@@ -384,15 +392,15 @@
     <section class="download-section" id="download">
         <div class="container">
             <div class="download-content">
-                <h2>Start Your Spiritual Journey Today</h2>
-                <p>Download Asma Ul Husna and begin exploring the beautiful names of Allah</p>
+                <h2 data-translate="download.title">Start Your Spiritual Journey Today</h2>
+                <p data-translate="download.subtitle">Download Asma Ul Husna and begin exploring the beautiful names of Allah</p>
                 
                 <div class="download-buttons">
                     <a href="#" class="testflight-btn large">
                         <div class="btn-content">
                             <i class="fab fa-apple"></i>
                             <div class="btn-text">
-                                <span class="btn-label">Download on</span>
+                                <span class="btn-label" data-translate="download.button.label">Download on</span>
                                 <span class="btn-title">TestFlight</span>
                             </div>
                         </div>
@@ -402,15 +410,15 @@
                 <div class="download-info">
                     <div class="info-item">
                         <i class="fas fa-mobile-alt"></i>
-                        <span>iOS Compatible</span>
+                        <span data-translate="download.info.compatible">iOS Compatible</span>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-download"></i>
-                        <span>Free Download</span>
+                        <span data-translate="download.info.free">Free Download</span>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-shield-alt"></i>
-                        <span>Privacy Focused</span>
+                        <span data-translate="download.info.privacy">Privacy Focused</span>
                     </div>
                 </div>
             </div>
@@ -429,8 +437,8 @@
                     </div>
                 </div>
                 <div class="footer-text">
-                    <p>&copy; 2025 <b>Asma Ul Husna - Esmaül Hüsna</b>. All rights reserved.</p>
-                    <p>Developed by <a href="https://akililabs.org/" target="_blank" rel="noopener noreferrer">AkiliLabs</a></p>
+                    <p data-translate="footer.copyright">&copy; 2025 <b>Asma Ul Husna - Esmaül Hüsna</b>. All rights reserved.</p>
+                    <p data-translate="footer.developer">Developed by <a href="https://akililabs.org/" target="_blank" rel="noopener noreferrer">AkiliLabs</a></p>
                 </div>
             </div>
         </div>
