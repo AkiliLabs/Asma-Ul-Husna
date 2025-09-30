@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeVideoPlayer();
     initializeSmoothScrolling();
     initializeCounters();
+    initializeLanguage(); // Initialize language support
     // initializeParallaxEffects();
     initPhoneSlideshow(); // Add phone slideshow initialization
     initializeScrollIndicator(); // Add scroll indicator functionality
@@ -835,3 +836,281 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add any additional initializations here
     // console.log('Asma Ul Husna website loaded successfully');
 });
+
+// Language Toggle Functionality
+const translations = {
+    en: {
+        nav: {
+            title: "Asma Ul Husna",
+            features: "Features",
+            about: "About",
+            download: "Download"
+        },
+        hero: {
+            title: "Asma Ul Husna",
+            tagline: "Experience the divine beauty of Allah's 99 Names through an elegant, interactive journey that brings spiritual meaning to your daily life",
+            hadith: {
+                translation: '"Allah has ninety-nine names, whoever learns them will enter Paradise"',
+                reference: "- Prophet Muhammad ﷺ (Sahih al-Bukhari)"
+            },
+            download: {
+                subtitle: "Download on"
+            },
+            explore: "Explore Features"
+        },
+        showcase: {
+            title: "Experience the App",
+            subtitle: "See how Asma Ul Husna brings the 99 Names of Allah to life",
+            slides: [
+                {
+                    title: "Beautiful Splash Screen",
+                    description: "Start your spiritual journey with inspiring verses from the Quran, setting a peaceful and reverent tone for your experience with Allah's beautiful names."
+                },
+                {
+                    title: "Interactive Card Experience",
+                    description: "Swipe through elegantly designed cards featuring each of the 99 names with Arabic calligraphy, English transliteration, and meaningful translations."
+                },
+                {
+                    title: "Detailed View",
+                    description: "Explore each name in depth with beautiful layouts, including meanings, benefits, and relevant verses from the Quran."
+                },
+                {
+                    title: "Personalized Experience",
+                    description: "Save your favorite names, customize your experience, and access helpful settings to make the app truly yours on your spiritual journey."
+                },
+                {
+                    title: "List View",
+                    description: "Save your favorite names, customize your experience, and access helpful settings to make the app truly yours on your spiritual journey."
+                }
+            ]
+        },
+        features: {
+            title: "Discover the Features",
+            subtitle: "Everything you need for a meaningful spiritual experience",
+            items: [
+                {
+                    title: "Two Browsing Modes",
+                    description: "Choose between beautiful swipeable cards for immersive reading or a fast-scroll list view for quick navigation through all 99 names."
+                },
+                {
+                    title: "Rich Details",
+                    description: "Each name includes its meaning, the Quranic verses where it appears, and beautiful audio recitations to enhance your understanding."
+                },
+                {
+                    title: "Personalization",
+                    description: "Save your favorite names and verses for quick access. Create your personal collection of the names that resonate most with you."
+                },
+                {
+                    title: "Multi-language Support",
+                    description: "Experience the app in both English and Turkish, making it accessible to a wider community of believers."
+                },
+                {
+                    title: "Audio Recitations",
+                    description: "Listen to beautiful recitations of each name to improve pronunciation and deepen your spiritual connection."
+                },
+                {
+                    title: "Helpful Notifications",
+                    description: "Receive gentle reminders and daily inspiration to keep you connected with the beautiful names of Allah throughout your day."
+                }
+            ]
+        },
+        about: {
+            title: "About Asma Ul Husna",
+            paragraph1: "Asma Ul Husna is more than just an app—it's a spiritual companion designed to help Muslims around the world deepen their connection with Allah through His beautiful names. Each of the 99 names carries profound meaning and reflects different aspects of Allah's infinite mercy, wisdom, and power.",
+            paragraph2: "Our app combines traditional Islamic knowledge with modern technology, creating an accessible and engaging way to explore these sacred names. Whether you're a student of Islamic studies, someone seeking spiritual growth, or simply curious about the beauty of Islamic tradition, Asma Ul Husna provides a respectful and enriching experience.",
+            paragraph3: "The app was carefully crafted with attention to Islamic values and aesthetics, ensuring that every interaction enhances rather than distracts from the spiritual significance of Allah's names.",
+            verse: {
+                translation: "He is Allah, other than whom there is no deity, the Sovereign, the Pure, the Perfection, the Bestower of Faith, the Overseer, the Exalted in Might, the Compeller, the Superior. Exalted is Allah above whatever they associate with Him."
+            }
+        },
+        download: {
+            title: "Start Your Spiritual Journey Today",
+            subtitle: "Download Asma Ul Husna and begin exploring the beautiful names of Allah",
+            button: {
+                label: "Download on"
+            },
+            info: {
+                compatible: "iOS Compatible",
+                free: "Free Download",
+                privacy: "Privacy Focused"
+            }
+        },
+        footer: {
+            copyright: "&copy; 2025 <b>Asma Ul Husna - Esmaül Hüsna</b>. All rights reserved.",
+            developer: "Developed by <a href=\"https://akililabs.org/\" target=\"_blank\" rel=\"noopener noreferrer\">AkiliLabs</a>"
+        }
+    },
+    tr: {
+        nav: {
+            title: "Esmaül Hüsna",
+            features: "Özellikler",
+            about: "Hakkında",
+            download: "İndir"
+        },
+        hero: {
+            title: "Esmaül Hüsna",
+            tagline: "Allah'ın 99 güzel isminin ilahi güzelliğini, günlük yaşamınıza ruhani anlam katan zarif ve etkileşimli bir yolculuk aracılığıyla deneyimleyin",
+            hadith: {
+                translation: '"Allah\'ın doksan dokuz ismi vardır, bunları öğrenen cennete girer"',
+                reference: "- Peygamber Muhammed ﷺ (Sahih al-Bukhari)"
+            },
+            download: {
+                subtitle: "İndir"
+            },
+            explore: "Özellikleri Keşfet"
+        },
+        showcase: {
+            title: "Uygulamayı Deneyimleyin",
+            subtitle: "Esmaül Hüsna'nın Allah'ın 99 ismini nasıl hayata geçirdiğini görün",
+            slides: [
+                {
+                    title: "Güzel Açılış Ekranı",
+                    description: "Kur'an'dan ilham verici ayetlerle ruhani yolculuğunuza başlayın, Allah'ın güzel isimleriyle deneyiminiz için huzurlu ve saygılı bir ton belirleyin."
+                },
+                {
+                    title: "Etkileşimli Kart Deneyimi",
+                    description: "Arapça hat sanatı, İngilizce transliterasyon ve anlamlı çevirilerle 99 ismin her birini içeren zarif tasarlanmış kartlar arasında kaydırın."
+                },
+                {
+                    title: "Detaylı Görünüm",
+                    description: "Her ismi anlamları, faydaları ve Kur'an'dan ilgili ayetler dahil güzel düzenlerle derinlemesine keşfedin."
+                },
+                {
+                    title: "Kişiselleştirilmiş Deneyim",
+                    description: "Favori isimlerinizi kaydedin, deneyiminizi özelleştirin ve ruhani yolculuğunuzda uygulamayı gerçekten sizin yapan yararlı ayarlara erişin."
+                },
+                {
+                    title: "Liste Görünümü",
+                    description: "Favori isimlerinizi kaydedin, deneyiminizi özelleştirin ve ruhani yolculuğunuzda uygulamayı gerçekten sizin yapan yararlı ayarlara erişin."
+                }
+            ]
+        },
+        features: {
+            title: "Özellikleri Keşfedin",
+            subtitle: "Anlamlı bir ruhani deneyim için ihtiyacınız olan her şey",
+            items: [
+                {
+                    title: "İki Gezinme Modu",
+                    description: "Sürükleyici okuma için güzel kaydırılabilir kartlar veya tüm 99 isim arasında hızlı gezinme için hızlı kaydırma liste görünümü arasından seçin."
+                },
+                {
+                    title: "Zengin Detaylar",
+                    description: "Her isim anlamını, göründüğü Kur'an ayetlerini ve anlayışınızı artırmak için güzel sesli okumaları içerir."
+                },
+                {
+                    title: "Kişiselleştirme",
+                    description: "Hızlı erişim için favori isimlerinizi ve ayetlerinizi kaydedin. Size en çok hitap eden isimlerin kişisel koleksiyonunuzu oluşturun."
+                },
+                {
+                    title: "Çok Dil Desteği",
+                    description: "Uygulamayı hem İngilizce hem de Türkçe olarak deneyimleyin, daha geniş bir inananlar topluluğu için erişilebilir hale getirin."
+                },
+                {
+                    title: "Sesli Okumalar",
+                    description: "Her ismin güzel okumalarını dinleyerek telaffuzu geliştirin ve ruhani bağınızı derinleştirin."
+                },
+                {
+                    title: "Yararlı Bildirimler",
+                    description: "Gününüz boyunca Allah'ın güzel isimleriyle bağlantınızı sürdürmek için nazik hatırlatmalar ve günlük ilham alın."
+                }
+            ]
+        },
+        about: {
+            title: "Esmaül Hüsna Hakkında",
+            paragraph1: "Esmaül Hüsna sadece bir uygulama değil—dünya çapındaki Müslümanların Allah'ın güzel isimleri aracılığıyla O'nunla bağlarını derinleştirmelerine yardımcı olmak için tasarlanmış ruhani bir arkadaştır. 99 ismin her biri derin anlam taşır ve Allah'ın sonsuz merhameti, hikmeti ve gücünün farklı yönlerini yansıtır.",
+            paragraph2: "Uygulamamız geleneksel İslami bilgiyi modern teknolojiyle birleştirerek bu kutsal isimleri keşfetmek için erişilebilir ve ilgi çekici bir yol yaratır. İslami araştırmalar öğrencisi, ruhani gelişim arayan biri veya sadece İslami geleneğin güzelliğini merak eden biri olsanız da, Esmaül Hüsna saygılı ve zenginleştirici bir deneyim sunar.",
+            paragraph3: "Uygulama, her etkileşimin Allah'ın isimlerinin ruhani öneminden dikkat dağıtmak yerine onu artırmasını sağlayarak İslami değerler ve estetik açısından dikkatli bir şekilde hazırlandı.",
+            verse: {
+                translation: "O, kendisinden başka ilah bulunmayan Allah'tır. O, mülkün gerçek sahibi, mukaddes, barış ve esenlik veren, iman verip koruyan, gözetip koruyan, mutlak güç sahibi, düzeltip ıslah eden, büyüklükte eşsiz olandır. Allah, ortak koştukları şeylerden uzaktır."
+            }
+        },
+        download: {
+            title: "Ruhani Yolculuğunuza Bugün Başlayın",
+            subtitle: "Esmaül Hüsna'yı indirin ve Allah'ın güzel isimlerini keşfetmeye başlayın",
+            button: {
+                label: "İndir"
+            },
+            info: {
+                compatible: "iOS Uyumlu",
+                free: "Ücretsiz İndirme",
+                privacy: "Gizlilik Odaklı"
+            }
+        },
+        footer: {
+            copyright: "&copy; 2025 <b>Asma Ul Husna - Esmaül Hüsna</b>. Tüm hakları saklıdır.",
+            developer: "<a href=\"https://akililabs.org/\" target=\"_blank\" rel=\"noopener noreferrer\">AkiliLabs</a> tarafından geliştirilmiştir"
+        }
+    }
+};
+
+let currentLanguage = 'en';
+
+function initializeLanguage() {
+    // Check if user has a saved language preference
+    const savedLanguage = localStorage.getItem('preferred-language');
+    if (savedLanguage && translations[savedLanguage]) {
+        currentLanguage = savedLanguage;
+        setLanguage(currentLanguage);
+    } else {
+        // Check browser language for Turkish users
+        const browserLang = navigator.language.toLowerCase();
+        if (browserLang.startsWith('tr')) {
+            currentLanguage = 'tr';
+            setLanguage(currentLanguage);
+        }
+    }
+    updateLanguageButton();
+}
+
+function toggleLanguage() {
+    currentLanguage = currentLanguage === 'en' ? 'tr' : 'en';
+    setLanguage(currentLanguage);
+    localStorage.setItem('preferred-language', currentLanguage);
+    updateLanguageButton();
+}
+
+function setLanguage(lang) {
+    const translation = translations[lang];
+    if (!translation) return;
+
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+    
+    // Update page title
+    document.title = lang === 'tr' ? 'Esmaül Hüsna - 99 Güzel İsim' : 'Asma Ul Husna - Esmaül Hüsna';
+
+    // Update all elements with data-translate attributes
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        const value = getNestedTranslation(translation, key);
+        
+        if (value) {
+            // Handle HTML content for links and formatting
+            if (key.includes('footer') || key.includes('developer')) {
+                element.innerHTML = value;
+            } else {
+                element.textContent = value;
+            }
+        }
+    });
+}
+
+function getNestedTranslation(obj, path) {
+    return path.split('.').reduce((current, key) => {
+        if (current && typeof current === 'object') {
+            // Handle array indices
+            if (!isNaN(key)) {
+                return current[parseInt(key)];
+            }
+            return current[key];
+        }
+        return undefined;
+    }, obj);
+}
+
+function updateLanguageButton() {
+    const langButton = document.getElementById('current-lang');
+    if (langButton) {
+        langButton.textContent = currentLanguage.toUpperCase();
+    }
+}

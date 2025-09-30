@@ -61,16 +61,18 @@ p {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding: 0 20px;
+    gap: 2rem;
 }
 
 .nav-logo {
     display: flex;
     align-items: center;
     gap: 12px;
+    justify-self: start;
 }
 
 .nav-icon {
@@ -102,6 +104,8 @@ p {
     display: flex;
     gap: 2rem;
     align-items: center;
+    justify-self: center;
+    white-space: nowrap;
 }
 
 .nav-links a {
@@ -109,6 +113,8 @@ p {
     color: #2D3C4D;
     font-weight: 500;
     transition: color 0.3s ease;
+    padding: 0.5rem 0;
+    min-width: fit-content;
 }
 
 .nav-links a:hover {
@@ -128,6 +134,13 @@ p {
     transform: translateY(-2px);
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-self: end;
+}
+
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -140,6 +153,45 @@ p {
     background: #3F704D;
     margin: 3px 0;
     transition: 0.3s;
+}
+
+/* Language Toggle */
+.language-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.lang-btn {
+    background: rgba(63, 112, 77, 0.1);
+    border: 2px solid #3F704D;
+    color: #3F704D;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 70px;
+    justify-content: center;
+}
+
+.lang-btn:hover {
+    background: #3F704D;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(63, 112, 77, 0.3);
+}
+
+.lang-btn i {
+    font-size: 0.8rem;
+}
+
+.lang-btn #current-lang {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
 }
 
 /* Hero Section */
@@ -1894,14 +1946,45 @@ p {
     }
 }
 
+/* Tablet styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .nav-container {
+        gap: 1.5rem;
+        padding: 0 30px;
+    }
+    
+    .nav-links {
+        gap: 1.5rem;
+    }
+}
+
 @media (max-width: 768px) {
     .hero {
         padding-top: 100px; /* Increased for mobile navbar coverage */
         min-height: 100vh;
     }
     
+    .nav-container {
+        grid-template-columns: 1fr auto;
+        gap: 1rem;
+    }
+    
     .nav-links {
         display: none;
+    }
+    
+    .nav-right {
+        gap: 0.5rem;
+    }
+    
+    .language-toggle {
+        margin: 0;
+    }
+    
+    .lang-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+        min-width: 60px;
     }
     
     .mobile-menu-toggle {
