@@ -1093,6 +1093,9 @@ function setLanguage(lang) {
             }
         }
     });
+
+    // Update screenshot images based on language
+    updateScreenshotImages(lang);
 }
 
 function getNestedTranslation(obj, path) {
@@ -1113,4 +1116,27 @@ function updateLanguageButton() {
     if (langButton) {
         langButton.textContent = currentLanguage.toUpperCase();
     }
+}
+
+function updateScreenshotImages(lang) {
+    // Find all screenshot images and update their src attributes
+    const screenshotImages = document.querySelectorAll('img[src*="screenshot_"]');
+    
+    screenshotImages.forEach(img => {
+        const currentSrc = img.src;
+        let newSrc;
+        
+        if (lang === 'tr') {
+            // Replace _en with _tr
+            newSrc = currentSrc.replace(/_en\.png/g, '_tr.png');
+        } else {
+            // Replace _tr with _en
+            newSrc = currentSrc.replace(/_tr\.png/g, '_en.png');
+        }
+        
+        // Only update if the src actually changed to avoid unnecessary reloads
+        if (newSrc !== currentSrc) {
+            img.src = newSrc;
+        }
+    });
 }
